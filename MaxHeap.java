@@ -38,12 +38,48 @@ public final class MaxHeap<T extends Comparable<? super T>>
 
    public void add(T newEntry)
    {
-   // See Segment 27.8.
+    // @author Frank M. Carrano, Timothy M. Henry
+    // @version 5.0
+    public void add(T newEntry)
+    {
+    checkIntegrity();        // Ensure initialization of data fields
+    int newIndex = lastIndex + 1;
+    int parentIndex = newIndex / 2;
+    while ( (parentIndex > 0) && newEntry.compareTo(heap[parentIndex]) > 0)
+    {
+        heap[newIndex] = heap[parentIndex];
+        newIndex = parentIndex;
+        parentIndex = newIndex / 2;
+    } // end while
+
+    heap[newIndex] = newEntry;
+    lastIndex++;
+    ensureCapacity();
+} // end add
+
    } // end add
 
    public T removeMax()
    {
-   // See Segment 27.12. 
+    // @author Frank M. Carrano, Timothy M. Henry
+    // @version 5.0
+    public T removeMax()
+    {
+    checkIntegrity();             // Ensure initialization of data fields
+    T root = null;
+
+    if (!isEmpty())
+    {
+        root = heap[1];            // Return value
+        heap[1] = heap[lastIndex]; // Form a semiheap
+        lastIndex--;               // Decrease size
+        reheap(1);                 // Transform to a heap
+    } // end if
+
+    return root;
+} // end removeMax
+
+ 
    } // end removeMax
 
    public T getMax()
