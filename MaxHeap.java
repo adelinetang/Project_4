@@ -13,19 +13,19 @@ public final class MaxHeap<T extends Comparable<? super T>> implements MaxHeapIn
    } // end default constructor
    
     public MaxHeap(int initialCapacity){
-      // Is initialCapacity too small?
-      if (initialCapacity < DEFAULT_CAPACITY) {
-          initialCapacity = DEFAULT_CAPACITY;
-      }else { // Is initialCapacity too big?
-          checkCapacity(initialCapacity);
-      }
+        // Is initialCapacity too small?
+        if (initialCapacity < DEFAULT_CAPACITY) {
+            initialCapacity = DEFAULT_CAPACITY;
+        }else { // Is initialCapacity too big?
+            checkCapacity(initialCapacity);
+        }
 
-      // The cast is safe because the new array contains null entries
-      @SuppressWarnings("unchecked");
-      T[] tempHeap = (T[])new Comparable[initialCapacity + 1];
-      heap = tempHeap;
-      lastIndex = 0;
-      integrityOK = true;
+        // The cast is safe because the new array contains null entries
+        @SuppressWarnings("unchecked");
+        T[] tempHeap = (T[])new Comparable[initialCapacity + 1];
+        heap = tempHeap;
+        lastIndex = 0;
+        integrityOK = true;
     } // end constructor
 
     public void add(T newEntry){
