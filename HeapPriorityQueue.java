@@ -11,6 +11,6 @@ public final class HeapPriorityQueue<T extends Comparable<? super T>> implements
 		pq.add(newEntry);
 	} // end add
 
-/* < Implementations of remove, peek, isEmpty, getSize, and clear are here. >
-   . . . */
+	public reheap();
+
 } // end HeapPriorityQueue
