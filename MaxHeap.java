@@ -6,7 +6,24 @@ public final class MaxHeap<T extends Comparable<? super T>> implements MaxHeapIn
     private boolean integrityOK = false;
     private static final int DEFAULT_CAPACITY = 25;
     private static final int MAX_CAPACITY = 10000;
-   
+
+    private void checkCapacity(int capacity) {
+        if (capacity > MAX_CAPACITY)
+            throw new IllegalStateException("Attempt to create a bag whose capacity exceeds " + "allowed maximum of " + MAX_CAPACITY);
+    }// end checkCapacity
+
+    private void ensureCapacity(){
+        if (lastIndex >= heap.length - 1) {// If array is full, double its size
+            int newLength = 2 * heap.length;
+            checkCapacity(newLength);
+        } // end if
+    } // end ensureCapacity
+
+    private void checkIntegrity() {
+        if (!integrityOK)
+            throw new SecurityException("ArrayBag object is corrupt.");
+    }// end checkIntegrity
+
     public MaxHeap()
    {
       this(DEFAULT_CAPACITY); // Call next constructor
@@ -40,23 +57,6 @@ public final class MaxHeap<T extends Comparable<? super T>> implements MaxHeapIn
             reheap(rootIndex);
         }
     }//end constructor
-
-    private void checkCapacity(int capacity) {
-        if (capacity > MAX_CAPACITY)
-            throw new IllegalStateException("Attempt to create a bag whose capacity exceeds " + "allowed maximum of " + MAX_CAPACITY);
-    }// end checkCapacity
-
-    private void ensureCapacity(){
-        if (lastIndex >= heap.length - 1) {// If array is full, double its size
-            int newLength = 2 * heap.length;
-            checkCapacity(newLength);
-        } // end if
-    } // end ensureCapacity
-
-    private void checkIntegrity() {
-        if (!integrityOK)
-            throw new SecurityException("ArrayBag object is corrupt.");
-    }// end checkIntegrity
 
     public void add(T newEntry){
         checkIntegrity();        // Ensure initialization of data fields
