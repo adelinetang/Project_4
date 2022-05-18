@@ -13,4 +13,6 @@ public final class HeapPriorityQueue<T extends Comparable<? super T>> implements
 
 	public reheap();
 
+	public maxHeapPrint();
+
 } // end HeapPriorityQueue

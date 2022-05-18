@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import data.txt;
 
 public final class MaxHeap<T extends Comparable<? super T>> implements MaxHeapInterface<T> {
     private T[] heap;      // Array of heap entries; ignore heap[0]
@@ -112,5 +113,12 @@ public final class MaxHeap<T extends Comparable<? super T>> implements MaxHeapIn
         } // end while
         lastIndex = 0;
    } // end clear
+
+    public maxHeapPrint(T[] heap){
+        int indexNum = 0;
+        if(int indexNum; indexNum >= heap.length; indexNum++){
+            System.out.println(heap[indexNum]);
+        }
+    }
 
 } // end MaxHeap
