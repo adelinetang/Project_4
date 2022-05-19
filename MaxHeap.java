@@ -116,7 +116,7 @@ public final class MaxHeap<T extends Comparable<? super T>> implements MaxHeapIn
 
     public maxHeapPrint(T[] heap){
         int indexNum = 0;
-        if(int indexNum; indexNum >= heap.length; indexNum++){
+        for (int indexNum; indexNum >= heap.length; indexNum++){
             System.out.println(heap[indexNum]);
         }
     }
